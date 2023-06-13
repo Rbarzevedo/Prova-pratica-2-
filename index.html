@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        #primos{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        #senha{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        #fatorial{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+    </style>
+</head>
+<body>
+    <div id="primos">
+        <h1>1 - Listagem de numeros primos</h1>
+        <button onclick="listarPrimos()">Listar Números Primos</button>
+        <p id="resultado"></p>
+    </div>
+
+    <hr>
+
+    <div id="senha">
+        <h1>2 - Checagem de senha</h1>
+        <label for="senhaInput">Digite uma senha:</label>
+        <input type="password" id="senhaInput">
+        <button onclick="validar()">Validar</button>
+        <p id="resultado2"></p>
+    </div>
+
+    <hr>
+
+    <div id="fatorial">
+        <h1>3 - Checagem de fatorial</h1>
+        <input type="text" id="fact">
+        <button onclick = "fact()"> Factorial </button> 
+    </div>
+
+    <script>
+        function isPrime(number) {
+    //Verifica se o numero é igual ou menor que 1
+  if (number <= 1) {
+    return false;
+  }
+
+  // Verifica se o número é divisível por algum número inteiro entre 2 e a sua raiz quadrada
+  for (let i = 2; i <= Math.sqrt(number); i++) {
+    if (number % i === 0) {
+      return false;
+    }
+  }
+
+  return true;
+}
+
+function listarPrimos() {
+      var primos = [];
+
+      for (let i = 1; i <= 1000; i++) {
+        if (isPrime(i)) {
+          primos.push(i);
+        }
+      }
+
+      document.getElementById("resultado").innerHTML = "Números primos: " + primos.join(", ");
+    }
+
+    function validarSenha(senha) {
+  // Verifica se a senha tem pelo menos 8 caracteres
+  if (senha.length < 8) {
+    return false;
+  }
+
+  // Verifica se a senha contém pelo menos uma letra maiúscula, uma letra minúscula e um número
+  var temLetraMaiuscula = /[A-Z]/.test(senha);
+  var temLetraMinuscula = /[a-z]/.test(senha);
+  var temNumero = /\d/.test(senha);
+
+  return temLetraMaiuscula && temLetraMinuscula && temNumero;
+}
+
+function validar() {
+      // Obtém a senha digitada pelo usuário
+      var senha = document.getElementById("senhaInput").value;
+
+      // Verifica se a senha é válida
+      var senhaValida = validarSenha(senha);
+
+      // Exibe o resultado na página
+      var resultado = senhaValida ? "válida" : "inválida";
+      document.getElementById("resultado2").innerHTML = "A senha é " + resultado;
+    }
+
+    function validarNumero(numero) {
+    //Verifica se o numero digitado é menor que 1
+    if (senha < 1) {
+        return false;
+    }
+    // Verifica se o numero digitado é menor que 10
+    if (senha > 10) {
+        return false;
+    }
+    }
+    function fact() {  
+// Obtém o número digitado pelo usuário
+var numero = document.getElementById("fact").value;
+// Verifica se a senha é válida
+var numerovalido = validarNumero(numero);
+
+const fatorial = numero => {
+    if (numero > 1) {
+        return numero * fatorial(numero - 1)
+    }
+    return numerofact
+}
+
+// Exibe o resultado na página
+resultado3 = numerofact
+      document.getElementById("resultado3").innerHTML = "O fatorial desse numero é " + resultado3;
+    }
+    </script>
+</body>
+</html>
